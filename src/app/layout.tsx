@@ -1,19 +1,14 @@
 import { cn } from "@/lib/utils";
 import AppProvider from "@/providers/AppProvider";
 import type { Metadata } from "next";
-import { Aboreto, Inter, Raleway } from "next/font/google";
+import { Inter, Raleway } from "next/font/google";
+import { Toaster } from "sonner";
 import "./globals.css";
 
 const inter = Inter({
   subsets: ["latin"],
   weight: ["300", "400", "500", "600", "700", "700"],
   variable: "--font-inter",
-});
-
-export const aboreto = Aboreto({
-  subsets: ["latin"],
-  weight: ["400"],
-  variable: "--font-aboreto",
 });
 
 const raleWay = Raleway({
@@ -34,15 +29,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={cn(
-          inter.variable,
-          raleWay.className,
-          aboreto.variable,
-          "antialiased"
-        )}
-      >
+      <body className={cn(inter.variable, raleWay.className, "antialiased")}>
         <AppProvider>{children}</AppProvider>
+        <Toaster />
       </body>
     </html>
   );
